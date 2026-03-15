@@ -1,21 +1,40 @@
 /* style.css */
+:root {
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --h1-color: #2c3e50;
+    --button-bg: linear-gradient(145deg, #6a11cb, #2575fc);
+    --button-shadow: rgba(0, 0, 0, 0.2);
+    --button-hover-shadow: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --h1-color: #ffffff;
+    --button-bg: linear-gradient(145deg, #4a00e0, #8e2de2);
+    --button-shadow: rgba(0, 0, 0, 0.5);
+    --button-hover-shadow: rgba(0, 0, 0, 0.7);
+}
+
 body {
     font-family: 'Helvetica Neue', sans-serif;
     text-align: center;
-    background-color: #f0f2f5;
+    background-color: var(--bg-color);
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-    color: #333;
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     margin: 0;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
     font-size: 3rem;
-    color: #2c3e50;
+    color: var(--h1-color);
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
@@ -27,25 +46,40 @@ h1 {
     gap: 1rem;
 }
 
-#generate-button {
+#generate-button, #theme-toggle {
     margin-top: 2rem;
     padding: 1rem 2rem;
     font-size: 1.2rem;
     cursor: pointer;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(145deg, #6a11cb, #2575fc);
+    background: var(--button-bg);
     color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px var(--button-shadow);
     transition: all 0.3s ease;
 }
 
-#generate-button:hover {
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    margin-top: 0;
+    padding: 0.8rem;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#generate-button:hover, #theme-toggle:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px var(--button-hover-shadow);
 }
 
 lotto-ball {
-    --ball-color: #f0f2f5;
-    --text-color: #333;
+    --ball-color: var(--bg-color);
+    --text-color: var(--text-color);
 }
